@@ -27,7 +27,7 @@
             <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
  			<prop key="use_sql_comments">${use_sql_comments}</prop>
  			<prop key="hibernate.format_sql">${hibernate.format_sql}</prop> 
-             <prop key="hibernate.hbm2ddl.import_files">populate.sql</prop>
+             <prop key="hibernate.hbm2ddl.import_files">everest.sql</prop>
           </props>
       </property>
    </bean>
@@ -45,13 +45,10 @@
    </bean>
    
    <!-- Scan for  transaction-based resources -->
-   	<context:component-scan base-package="edu.mum.service,edu.mum.dao" />
+   	<context:component-scan base-package="edu.mum.everest" />
   
     <tx:annotation-driven transaction-manager="transactionManager"/>
  
    <bean id="persistenceExceptionTranslationPostProcessor"
       class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
- 
-
- 
 </beans>
