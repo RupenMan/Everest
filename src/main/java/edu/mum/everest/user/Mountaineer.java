@@ -1,12 +1,11 @@
 package edu.mum.everest.user;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.FetchType;
-import javax.persistence.OneToOne;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-import edu.mum.everest.schedule.Booking;
-
+@Entity
+@Table(name="MOUNTAINEER")
 public class Mountaineer extends User {
 	
 	@Column(name="age")
@@ -15,9 +14,9 @@ public class Mountaineer extends User {
 	@Column(name="gender")
 	private String gender;
 	
-	@OneToOne(mappedBy="mountaineer", cascade= {CascadeType.PERSIST, CascadeType.MERGE},
-			fetch=FetchType.EAGER)
-	private Booking booking;
+//	@OneToOne(mappedBy="mountaineer", cascade= {CascadeType.PERSIST, CascadeType.MERGE},
+//			fetch=FetchType.EAGER)
+//	private Booking booking;
 
 	public int getAge() {
 		return age;

@@ -1,0 +1,1 @@
+INSERT INTO `MOUNTAINEER` (first_name, last_name) values('Rupendra', 'Maharjan')
