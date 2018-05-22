@@ -8,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 @Controller
 @RequestMapping("/mountaineer")
@@ -33,7 +34,6 @@ public class MountaineerController {
 			return "addMountaineer";
 		}
 
-		System.out.println("FNAME : " + saveMountaineer.getFirstName());
 		mountaineerService.saveMountaineer(saveMountaineer);
 		return "success";
 	}

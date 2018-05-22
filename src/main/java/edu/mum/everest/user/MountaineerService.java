@@ -12,4 +12,6 @@ public interface MountaineerService {
 	
 	public void cancelTrip(Booking booking);
 	
+//	public Mountaineer findMountaineerByUsername(String username);
+	
 }
