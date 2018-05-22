@@ -19,9 +19,9 @@ public class Mountaineer extends User {
 	@Column(name="gender")
 	private String gender;
 	
-//	@OneToOne(mappedBy="mountaineer", cascade= {CascadeType.PERSIST, CascadeType.MERGE},
-//			fetch=FetchType.EAGER)
-//	private Booking booking;
+	@OneToOne(mappedBy="mountaineer", cascade= {CascadeType.PERSIST, CascadeType.MERGE},
+			fetch=FetchType.EAGER)
+	private Booking booking;
 
 	public int getAge() {
 		return age;
@@ -38,6 +38,12 @@ public class Mountaineer extends User {
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	
-	
+
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
 }

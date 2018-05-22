@@ -17,6 +17,12 @@ public class MountaineerDaoImpl extends GenericDaoImpl<Mountaineer> implements M
 	public void bookTrip(Booking bookTrip) {
 		
 	}
-
 	
+//	@Override
+//	public Mountaineer findMountaineerByUsername(String username) {
+//		String jpql= "Select m from Mountaineer m where m.username =:username"; 
+//		return (Mountaineer) entityManager.createQuery(jpql)
+//				.setParameter("username", username)
+//				.getSingleResult();
+//	}	
 }

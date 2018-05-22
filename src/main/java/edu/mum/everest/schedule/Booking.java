@@ -8,11 +8,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+
+import edu.mum.everest.user.Mountaineer;
 
 
 @Entity
@@ -29,6 +30,10 @@ public class Booking {
 
 	@Temporal(TemporalType.DATE)
 	private Date bookingDate;
+	
+	@OneToOne
+	@JoinColumn(name = "mountaineer_id")
+	private Mountaineer mountaineer;
 	
 //	@ManyToOne
 //	@JoinTable(name="booking_schedule", joinColumns= {@JoinColumn(name="booking_id")}, 
@@ -58,6 +63,12 @@ public class Booking {
 	public void setBookingDate(Date bookingDate) {
 		this.bookingDate = bookingDate;
 	}
-	
-	
+
+	public Mountaineer getMountaineer() {
+		return mountaineer;
+	}
+
+	public void setMountaineer(Mountaineer mountaineer) {
+		this.mountaineer = mountaineer;
+	}
 }

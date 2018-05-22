@@ -15,4 +15,6 @@ public interface MountaineerDao extends GenericDao<Mountaineer>{
 	public void delete(Long id);
 	
 	public void bookTrip(Booking bookTrip);
+	
+//	public Mountaineer findMountaineerByUsername(String email);
 }

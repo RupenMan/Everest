@@ -18,6 +18,7 @@ public class BookingController {
 		Booking booking = new Booking();
 		booking.setStatus("Pending");
 		booking.setBookingDate(new Date());
+//		booking.setMountaineer(mountaineer);
 		bookingService.saveBooking(booking);
 		return "success";
 	}
