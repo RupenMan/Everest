@@ -6,7 +6,7 @@ public interface MountaineerService {
 	
 	public void saveMountaineer(Mountaineer climber);
 		
-	public void updateUserInfo(Mountaineer climber);
+	public void updateMountaineer(Mountaineer climber);
 	
 	public void bookTrip(Booking booking);
 	

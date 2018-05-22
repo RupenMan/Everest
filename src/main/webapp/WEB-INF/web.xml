@@ -33,9 +33,4 @@
     <error-code>403</error-code>
     <location>/WEB-INF/views/error-forbidden.jsp</location>
   </error-page>
-  
-  
- 
-  
-  
 </web-app>

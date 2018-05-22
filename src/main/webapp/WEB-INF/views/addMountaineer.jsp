@@ -14,8 +14,7 @@
 <link rel="stylesheet"
 	href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
 <body>
-	<form:form modelAttribute="newMountaineer"
-		action="saveMountaineer" method="POST">
+	<form:form modelAttribute="newMountaineer" action="saveMountaineer" method="POST">
 
 		<%-- <form:errors path="*" cssClass="alert alert-danger" /> --%>
 		<div>

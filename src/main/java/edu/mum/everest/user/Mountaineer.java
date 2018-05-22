@@ -1,8 +1,13 @@
 package edu.mum.everest.user;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import edu.mum.everest.schedule.Booking;
 
 @Entity
 @Table(name="MOUNTAINEER")
