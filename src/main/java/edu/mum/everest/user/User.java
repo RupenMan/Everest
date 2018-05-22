@@ -8,6 +8,11 @@ import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name="USER")
@@ -19,15 +24,21 @@ public class User {
 	@Column(name="user_id")
 	private long id;
 	
+	@NotEmpty(message = "{NotEmpty.valid}")
+	@Size(min=2, max=30,message="{Size.name.valid}")
 	@Column(name="first_name")
 	private String firstName;
 	
+	@NotEmpty(message = "{NotEmpty.valid}")
+	@Size(min=2, max=30,message="{Size.name.valid}")
 	@Column(name="last_name")
 	private String lastName;
 	
+	@Email(message="{Email.valid}")
 	@Column(name="email")
 	private String email;
 	
+	@Pattern(regexp="\\d{3}-\\d{3}-\\d{4}", message="{Phone.valid}")
 	@Column(name="phone")
 	private String phone;
 

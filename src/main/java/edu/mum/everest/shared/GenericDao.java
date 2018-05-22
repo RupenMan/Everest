@@ -5,10 +5,6 @@ package edu.mum.everest.shared;
 
 import java.util.List;
 
-/**
- * @author jeewa
- *
- */
 public interface GenericDao<T> {
 
 	void save(T t);

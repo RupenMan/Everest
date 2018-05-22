@@ -1,9 +1,9 @@
 package edu.mum.everest.user;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.everest.schedule.Booking;
 
@@ -20,7 +20,7 @@ public class MountaineerServiceImpl implements MountaineerService{
 	}
 	
 	@Override
-	public void updateUserInfo(Mountaineer climber) {
+	public void updateMountaineer(Mountaineer climber) {
 		mountaineerDao.update(climber);
 	}
 
@@ -34,7 +34,4 @@ public class MountaineerServiceImpl implements MountaineerService{
 //		mountaineerDao.delete(1L);
 //		mountaineerDao.delete(bookedTrip.getId());
 	}
-
-	
-
 }

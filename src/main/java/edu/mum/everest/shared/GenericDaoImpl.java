@@ -7,11 +7,13 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.Transactional;
 
 /**
  * @author jeewa
  *
  */
+
 public class GenericDaoImpl<T> implements GenericDao<T> {
 
 	@PersistenceContext
@@ -30,7 +32,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 	 */
 	@Override
 	public void save(T entity) {
-		// TODO Auto-generated method stub
 		entityManager.persist(entity);
 	}
 
@@ -67,7 +68,6 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 	 */
 	@Override
 	public T update(T entity) {
-		// TODO Auto-generated method stub
 		return entityManager.merge( entity );
 	}
 
