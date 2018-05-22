@@ -9,4 +9,14 @@ package edu.mum.everest.user;
  */
 public interface EmployeeService {
 
+	/**
+	 * @param employee
+	 */
+	void saveEmployee(Employee employee);
+
+	/**
+	 * @param employee
+	 */
+	void updateUserInfo(Employee employee);
+
 }
