@@ -10,4 +10,10 @@ public interface BookingService {
 	
 	public void updateBooking(Booking booking);
 
+	/**
+	 * @param bookingId
+	 * @return
+	 */
+	public Booking findOne(Long bookingId);
+
 }

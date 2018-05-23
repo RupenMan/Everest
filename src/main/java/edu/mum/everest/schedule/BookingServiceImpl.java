@@ -39,4 +39,13 @@ public class BookingServiceImpl implements BookingService{
 		return bookingDao.findOne(id);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.mum.everest.schedule.BookingService#findOne(java.lang.Long)
+	 */
+	@Override
+	public Booking findOne(Long bookingId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
