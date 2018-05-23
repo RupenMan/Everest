@@ -25,6 +25,17 @@ public class ScheduleController {
 	@Autowired
 	ScheduleService scheduleService;
 
+	
+	@RequestMapping(value = "/bookschedule", method = RequestMethod.GET)
+	public String bookSchedule(Model model) {
+		// if (id != null) {
+		// Schedule schedule = scheduleService.findOne(id);
+		// model.addAttribute("newSchedule", schedule);
+		// }
+		model.addAttribute("schedules", scheduleService.getAllSchedules());
+		return "bookschedule";
+	}
+	
 	@RequestMapping(value = "/addschedule", method = RequestMethod.GET)
 	public String addSchedule(@ModelAttribute("newSchedule") Schedule toBeSaveSchedule) {
 		// if (id != null) {
@@ -33,7 +44,7 @@ public class ScheduleController {
 		// }
 		return "addschedule";
 	}
-
+	
 	@RequestMapping(value = "/updateschedule", method = RequestMethod.GET)
 	public String updateSchedule(Model model, @RequestParam("id") Long id) {
 		Schedule schedule = scheduleService.findOne(id);

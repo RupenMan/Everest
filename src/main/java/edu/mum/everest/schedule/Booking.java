@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -36,10 +38,10 @@ public class Booking {
 	@JoinColumn(name = "mountaineer_id")
 	private Mountaineer mountaineer;
 	
-//	@ManyToOne
-//	@JoinTable(name="booking_schedule", joinColumns= {@JoinColumn(name="booking_id")}, 
-//		inverseJoinColumns = {@JoinColumn(name="schedule_id")})
-//	private Schedule schedule;
+	@ManyToOne
+	@JoinTable(name="booking_schedule", joinColumns= {@JoinColumn(name="booking_id")}, 
+		inverseJoinColumns = {@JoinColumn(name="schedule_id")})
+	private Schedule schedule;
 
 	public Long getId() {
 		return id;
@@ -71,5 +73,13 @@ public class Booking {
 
 	public void setMountaineer(Mountaineer mountaineer) {
 		this.mountaineer = mountaineer;
+	}
+
+	public Schedule getSchedule() {
+		return schedule;
+	}
+
+	public void setSchedule(Schedule schedule) {
+		this.schedule = schedule;
 	}
 }
