@@ -19,4 +19,10 @@ public interface EmployeeService {
 	 */
 	void updateUserInfo(Employee employee);
 
+	/**
+	 * @param username
+	 * @return
+	 */
+	Employee findEmployeeByUsername(String username);
+
 }
