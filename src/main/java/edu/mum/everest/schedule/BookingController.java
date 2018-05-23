@@ -7,9 +7,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import edu.mum.everest.user.Mountaineer;
 import edu.mum.everest.user.MountaineerService;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/booking")
@@ -21,13 +21,20 @@ public class BookingController {
 	@Autowired
 	private MountaineerService mountaineerService;
 
+	@Autowired
+	private ScheduleService scheduleSerive;
+	
 	@RequestMapping("/saveBooking")
-	public String save() {
+	public String save(@RequestParam("scheduleId") Long toBeBooked) {
 		Mountaineer activeMountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
 		activeMountaineer.setBooking(new Booking());
 		activeMountaineer.getBooking().setStatus("Pending");
 		activeMountaineer.getBooking().setBookingDate(new Date());
 		activeMountaineer.getBooking().setMountaineer(activeMountaineer);
+//		
+		Schedule schedule = scheduleSerive.findOne(toBeBooked);
+		activeMountaineer.getBooking().setSchedule(schedule);
+//		booking.setSchedule(schedule);
 		bookingService.saveBooking(activeMountaineer.getBooking());
 		return "success";
 	}

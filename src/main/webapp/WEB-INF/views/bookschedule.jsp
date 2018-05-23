@@ -25,9 +25,9 @@
 							<p>${schedule.description}</p>
  							<p>
 								<a
-									href=" <spring:url value="/schedule/updateschedule?id=${schedule.id}" /> "
+									href=" <spring:url value="/booking/saveBooking?scheduleId=${schedule.id}" /> "
 									class="btn btn-primary"> <span
-									class="glyphicon-info-sign glyphicon" /></span> Update
+									class="glyphicon-info-sign glyphicon" /></span> Book
 								</a>
 							</p>
 
