@@ -29,4 +29,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public void updateUserInfo(Employee employee) {
 		employeeDao.update(employee);
 	}
+	
+	@Override
+	public Employee findEmployeeByUsername(String username) {
+		return employeeDao.findEmployeeByUsername(username);
+	}
 }

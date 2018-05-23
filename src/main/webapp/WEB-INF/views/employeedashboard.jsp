@@ -24,7 +24,7 @@
 					    </c:when>
 					    <c:otherwise>
 		 					<a href="<spring:url value="/schedule/addschedule" />" class="btn btn-default pull-right">Add Schedule</a>	
-		 					<a href="<spring:url value="/schedule/viewbookingsforscheducles" />" class="btn btn-default pull-right">Bookings</a>	
+		 					<a href="<spring:url value="/schedule/all" />" class="btn btn-default pull-right">Bookings</a>	
 		 					<br>
 		 					<%-- <a href="<spring:url value="/products/add" />" class="btn btn-default pull-right">Add Product</a>	
 		 					<a href="<spring:url value="/products/all" />" class="btn btn-default pull-right">Product List</a> --%>	
