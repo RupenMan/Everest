@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import edu.mum.everest.aspect.Logging;
+import edu.mum.everest.user.MountaineerDao;
 
 @Service
 @Transactional
@@ -12,6 +13,9 @@ public class BookingServiceImpl implements BookingService{
 	
 	@Autowired
 	private BookingDao bookingDao;
+	
+	@Autowired 
+	private MountaineerDao mountaineerDao;
 	
 	@Logging
 	@Override
@@ -22,9 +26,14 @@ public class BookingServiceImpl implements BookingService{
 	@Logging
 	@Override
 	public void cancelBooking(Booking booking) {
-		bookingDao.delete(booking.getId());
+//		bookingDao.delete(booking.getId());
+		bookingDao.deleteBookById(booking.getId());
 	}
 
+	public void updateBooking(Booking booking) {
+		bookingDao.update(booking);
+	}
+	
 	@Override
 	public Booking findBookingById(Long id) {
 		return bookingDao.findOne(id);

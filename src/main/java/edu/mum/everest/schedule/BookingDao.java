@@ -9,4 +9,8 @@ public interface BookingDao extends GenericDao<Booking> {
 	
 	@Override
 	public void delete(Long id);
+	
+	public void delete(Booking booking);
+	
+	public void deleteBookById(Long id);
 }

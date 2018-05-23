@@ -8,10 +8,12 @@ public interface MountaineerService {
 		
 	public void updateMountaineer(Mountaineer climber);
 	
-	public void bookTrip(Booking booking);
-	
 	public void cancelTrip(Booking booking);
 	
-//	public Mountaineer findMountaineerByUsername(String username);
+	public Mountaineer findMountaineerById(Long id);
+	
+	public Mountaineer findMountaineerByUsername(String username);
+	
+	public void removeMountaineer(Mountaineer climber);
 	
 }

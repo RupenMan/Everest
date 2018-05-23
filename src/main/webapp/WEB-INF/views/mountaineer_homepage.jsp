@@ -11,11 +11,13 @@
 	<hr>
 	<div>
 		<label>DashBoard</label><br>
-		<a href="http://localhost:8080/Everest/mountaineer/addMountaineer">Update Information</a>
+		<a href="http://localhost:8080/Everest/mountaineer/viewMountaineerInfo">Personal Information</a><br>
+		<a href="http://localhost:8080/Everest/mountaineer/addMountaineer">Update Information</a><br>
+		<a href="http://localhost:8080/Everest/booking/viewBookingInfo">Booking Information</a>
 	</div>
 	<div>
 		<label>My Booking Information</label><br>
-		<a href="http://localhost:8080/Everest/booking/saveBooking">Save Booking</a>
+		<a href="http://localhost:8080/Everest/booking/saveBooking">Save Booking</a><br>
 		<a href="http://localhost:8080/Everest/booking/cancelBooking">Cancel Booking</a>
 	</div>
 </body>

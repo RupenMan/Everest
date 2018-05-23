@@ -22,7 +22,7 @@ public class User {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="user_id")
-	private long id;
+	private Long id;
 	
 	@NotEmpty(message = "{NotEmpty.valid}")
 	@Size(min=2, max=30,message="{Size.name.valid}")
@@ -42,11 +42,11 @@ public class User {
 	@Column(name="phone")
 	private String phone;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
