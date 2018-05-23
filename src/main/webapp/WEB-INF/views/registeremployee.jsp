@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+	pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
@@ -13,25 +13,28 @@
 <title>Register Employee</title>
 </head>
 <body>
-<form:form modelAttribute="newEmployee"
-		action="employee/saveEmployee" method="POST">
+	<form:form modelAttribute="newEmployee" action="employee/saveEmployee"
+		method="POST">
 
 		<%-- <form:errors path="*" cssClass="alert alert-danger" /> --%>
 		<div>
 			<label for="firstName">FirstName</label> <br>
-			<form:input type="text" path="firstName" placeholder="e.g. John" /><br>
+			<form:input type="text" path="firstName" placeholder="e.g. John" />
+			<br>
 			<form:errors path="firstName" />
 		</div>
 
 		<div>
 			<label for="lastName">LastName</label> <br>
-			<form:input type="text" path="lastName" placeholder="e.g. Cena" /><br>
+			<form:input type="text" path="lastName" placeholder="e.g. Cena" />
+			<br>
 			<form:errors path="lastName" />
 		</div>
 
 		<div>
 			<label for="email">Email</label> <br>
-			<form:input type="email" path="email" placeholder="abc@example.com" /><br>
+			<form:input type="email" path="email" placeholder="abc@example.com" />
+			<br>
 			<form:errors path="email" />
 		</div>
 
@@ -40,7 +43,7 @@
 			<label for="age">Phone</label> <br>
 			<form:input type="text" path="phone" value="15" min="15" max="80" />
 		</div>
-		
+
 		<input type="submit" value="Add Employee" />
 		<br>
 

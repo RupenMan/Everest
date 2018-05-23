@@ -24,12 +24,12 @@ public class EmployeeController {
 	EmployeeService employeeService;
 	
 	@RequestMapping(value= "", method = RequestMethod.GET)
-	public String getMountaineer(@ModelAttribute ("newEmployee") Employee toBeSaveEmployee) {
+	public String registerEmployee(@ModelAttribute ("newEmployee") Employee toBeSaveEmployee) {
 		return "registeremployee";
 	}
 	
 	@RequestMapping(value="/saveEmployee", method = RequestMethod.POST)
-	public String saveMountaineer(@Valid @ModelAttribute ("newEmployee") Employee toBeSaveEmployee,
+	public String saveEmployee(@Valid @ModelAttribute ("newEmployee") Employee toBeSaveEmployee,
 			BindingResult result) {
 		if(result.hasErrors()) {
 			return "registeremployee";

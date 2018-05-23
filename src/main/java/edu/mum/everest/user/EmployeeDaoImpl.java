@@ -11,8 +11,9 @@ import edu.mum.everest.shared.GenericDaoImpl;
  *
  */
 @Repository
-public class EmployeeDaoImpl extends GenericDaoImpl<Employee> implements EmployeeDao{
+public class EmployeeDaoImpl extends GenericDaoImpl<Employee> implements EmployeeDao {
+	
 	public EmployeeDaoImpl() {
-		super.setDaoType(Employee.class );
-		}
+		super.setDaoType(Employee.class);
+	}
 }
