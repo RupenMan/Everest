@@ -98,5 +98,13 @@ public class Schedule {
 	public void setShortDescription(String shortDescription) {
 		this.shortDescription = shortDescription;
 	}
+
+	public List<Booking> getBooking() {
+		return booking;
+	}
+
+	public void setBooking(List<Booking> booking) {
+		this.booking = booking;
+	}
 	
 }
