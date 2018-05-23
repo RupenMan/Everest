@@ -2,6 +2,7 @@ package edu.mum.everest.schedule;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Booking {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	@Column(name="booking_id")
-	private long id;
+	private Long id;
 
 	@Column(name="status")
 	private String status;
@@ -31,7 +32,7 @@ public class Booking {
 	@Temporal(TemporalType.DATE)
 	private Date bookingDate;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.MERGE)
 	@JoinColumn(name = "mountaineer_id")
 	private Mountaineer mountaineer;
 	
@@ -40,11 +41,11 @@ public class Booking {
 //		inverseJoinColumns = {@JoinColumn(name="schedule_id")})
 //	private Schedule schedule;
 
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 

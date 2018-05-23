@@ -4,30 +4,54 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import edu.mum.everest.user.Mountaineer;
+import edu.mum.everest.user.MountaineerService;
 
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
-	
+
 	@Autowired
 	private BookingService bookingService;
-	
+
+	@Autowired
+	private MountaineerService mountaineerService;
+
 	@RequestMapping("/saveBooking")
 	public String save() {
-		Booking booking = new Booking();
-		booking.setStatus("Pending");
-		booking.setBookingDate(new Date());
-//		booking.setMountaineer(mountaineer);
-		bookingService.saveBooking(booking);
+		Mountaineer activeMountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
+		activeMountaineer.setBooking(new Booking());
+		activeMountaineer.getBooking().setStatus("Pending");
+		activeMountaineer.getBooking().setBookingDate(new Date());
+		activeMountaineer.getBooking().setMountaineer(activeMountaineer);
+		bookingService.saveBooking(activeMountaineer.getBooking());
 		return "success";
 	}
-	
+
+	@RequestMapping(value = "/viewBookingInfo", method = RequestMethod.GET)
+	public String viewBooking(Model model) {
+		try {
+			Mountaineer activeMountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
+			Booking myBooking = activeMountaineer.getBooking();
+			model.addAttribute("booking", myBooking);
+			return "viewBookingInfo";
+		} catch (Exception ex) {
+			model.addAttribute("booking", new Booking());
+			return "viewBookingInfo";
+		}
+	}
+
 	@RequestMapping("/cancelBooking")
 	public String delete() {
-		Booking booking = bookingService.findBookingById(1L);
-		bookingService.cancelBooking(booking);
+		Mountaineer activeMountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
+		Booking myBooking = activeMountaineer.getBooking();
+		activeMountaineer.setBooking(null);
+		bookingService.cancelBooking(myBooking);
 		return "success";
 	}
-	
+
 }

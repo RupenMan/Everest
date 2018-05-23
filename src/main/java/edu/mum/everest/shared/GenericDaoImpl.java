@@ -7,13 +7,14 @@ import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.transaction.Transactional;
+
+import org.springframework.stereotype.Repository;
 
 /**
  * @author jeewa
  *
  */
-
+@Repository
 public class GenericDaoImpl<T> implements GenericDao<T> {
 
 	@PersistenceContext
@@ -47,9 +48,9 @@ public class GenericDaoImpl<T> implements GenericDao<T> {
 	public void delete(Long id) {
 		// TODO Auto-generated method stub
 		T entity = findOne( id );
-        delete( entity );
+        delete(entity);
 	}
-
+	
 	/*
 	 * (non-Javadoc)
 	 * 

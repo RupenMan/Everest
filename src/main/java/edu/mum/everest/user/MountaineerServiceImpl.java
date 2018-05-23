@@ -29,19 +29,25 @@ public class MountaineerServiceImpl implements MountaineerService{
 
 	@Override
 	@Logging
-	public void bookTrip(Booking bookTrip) {
-		mountaineerDao.bookTrip(bookTrip);
-	}
-
-	@Override
-	@Logging
 	public void cancelTrip(Booking bookedTrip) {
 //		mountaineerDao.delete(1L);
 //		mountaineerDao.delete(bookedTrip.getId());
 	}
+	
+	
+	@Override
+	public Mountaineer findMountaineerByUsername(String username) {
+		return mountaineerDao.findMountaineerByUsername(username);
+	}
 
-//	@Override
-//	public Mountaineer findMountaineerByUsername(String username) {
-//		return mountaineerDao.findMountaineerByUsername(username);
-//	}
+	@Override
+	public Mountaineer findMountaineerById(Long id) {
+		return mountaineerDao.findOne(id);
+	}
+
+	@Override
+	public void removeMountaineer(Mountaineer climber) {
+		mountaineerDao.delete(climber.getId());
+		
+	}
 }

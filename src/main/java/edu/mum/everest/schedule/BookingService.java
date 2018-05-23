@@ -7,5 +7,7 @@ public interface BookingService {
 	public Booking findBookingById(Long id);
 	
 	public void cancelBooking(Booking booking);
+	
+	public void updateBooking(Booking booking);
 
 }

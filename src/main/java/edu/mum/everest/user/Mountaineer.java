@@ -7,20 +7,21 @@ import javax.persistence.FetchType;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
 import edu.mum.everest.schedule.Booking;
 
 @Entity
-@Table(name="MOUNTAINEER")
+@Table(name = "MOUNTAINEER")
 public class Mountaineer extends User {
-	
-	@Column(name="age")
+
+	@Column(name = "age")
 	private int age;
-	
-	@Column(name="gender")
+
+	@Column(name = "gender")
 	private String gender;
-	
-	@OneToOne(mappedBy="mountaineer", cascade= {CascadeType.PERSIST, CascadeType.MERGE},
-			fetch=FetchType.EAGER)
+
+	@OneToOne(mappedBy = "mountaineer", cascade = { CascadeType.PERSIST}, fetch = FetchType.EAGER)
 	private Booking booking;
 
 	public int getAge() {
