@@ -49,7 +49,7 @@ public class EmployeeController {
 		}
 		
 		employeeService.saveEmployee(toBeSaveEmployee);
-		return "success";
+		return "redirect:/schedule/addschedule";
 	}
 	
 }
