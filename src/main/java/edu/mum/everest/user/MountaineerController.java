@@ -29,16 +29,21 @@ public class MountaineerController {
 	public String addMountaineer(@ModelAttribute("newMountaineer") Mountaineer newMountaineer, Model model) {
 		Mountaineer mountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
 		if (mountaineer != null) {
+			model.addAttribute("submitBtnValue", "Update");
 			model.addAttribute("mountaineer", mountaineer);
 		} else {
+			model.addAttribute("submitBtnValue", "Register");
 			model.addAttribute("mountaineer", new Mountaineer());
 		}
 		return "addMountaineer";
 	}
 
 	@RequestMapping(value = "/selector", method = RequestMethod.POST)
-	public String selector(@Valid @ModelAttribute("newMountaineer") Mountaineer saveMountaineer,BindingResult result) {
+	public String selector(@Valid @ModelAttribute("newMountaineer") Mountaineer saveMountaineer,BindingResult result,
+			Model model) {
 		if (result.hasErrors()) {
+			model.addAttribute("submitBtnValue", "Register");
+			model.addAttribute("mountaineer", saveMountaineer);
 			return "addMountaineer";
 		} else {
 			if (saveMountaineer.getId() == null) {
@@ -55,12 +60,12 @@ public class MountaineerController {
 
 	public String saveMountaineer(Mountaineer newMountaineer) {
 		mountaineerService.saveMountaineer(newMountaineer);
-		return "success";
+		return "redirect:homepage";
 	}
 
 	public String updateMountaineer(Mountaineer updateMountaineer) {
 		mountaineerService.updateMountaineer(updateMountaineer);
-		return "success";
+		return "redirect:homepage";
 	}
 
 	@RequestMapping(value = "/viewMountaineerInfo", method = RequestMethod.GET)

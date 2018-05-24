@@ -35,7 +35,7 @@ public class BookingController {
 		Schedule schedule = scheduleSerive.findOne(toBeBooked);
 		activeMountaineer.getBooking().setSchedule(schedule);
 		bookingService.saveBooking(activeMountaineer.getBooking());
-		return "success";
+		return "redirect:/mountaineer/homepage";
 	}
 	
 	@RequestMapping("/approveBooking")
@@ -65,7 +65,7 @@ public class BookingController {
 		Booking myBooking = activeMountaineer.getBooking();
 		activeMountaineer.setBooking(null);
 		bookingService.cancelBooking(myBooking);
-		return "success";
+		return "redirect:/mountaineer/homepage";
 	}
 
 }

@@ -77,7 +77,7 @@
 						<form:errors path="phone" />
 					</div>
 
-					<input type="submit" value="Add Mountaineer" />
+					<input type="submit" value="${submitBtnValue}" />
 					<br>
 					<form:input type="hidden" name="id" path="id"
 						value="${mountaineer.id}" />

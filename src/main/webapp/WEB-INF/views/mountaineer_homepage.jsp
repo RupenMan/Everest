@@ -45,20 +45,21 @@
 										</a></td>
 									</tr>
 
-									<tr>
+									<!-- <tr>
 										<td><a
 											href="http://localhost:8080/Everest/address/addAddress">
 												<button class="btn btn-info">Add Your Location</button>
 										</a></td>
+									</tr> -->
+									
+									<tr>
+										<td><a
+											href="http://localhost:8080/Everest/schedule/bookschedule">
+												<button class="btn btn-info">View Available Schedule</button>
+										</a></td>
 									</tr>
 								</tbody>
 							</table>
-						</div>
-
-						<div>
-							<label>My Booking Information</label><br> <a
-								href="http://localhost:8080/Everest/booking/cancelBooking">Cancel
-								Booking</a>
 						</div>
 					</div>
 					<div class="col-xs-9 col-sm-9 col-md-9">

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa"
-	xsi:schemaLocation="
-      http://www.springframework.org/schema/beans 
-      http://www.springframework.org/schema/beans/spring-beans.xsd
- 	  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-      http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+	xmlns:int="http://www.springframework.org/schema/integration"
+	xmlns:int-jms="http://www.springframework.org/schema/integration/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+		http://www.springframework.org/schema/integration/jms http://www.springframework.org/schema/integration/jms/spring-integration-jms-4.2.xsd
+		http://www.springframework.org/schema/integration http://www.springframework.org/schema/integration/spring-integration-4.2.xsd">
 
 	<context:property-placeholder location="classpath:application.properties" />
 
@@ -43,4 +46,75 @@
 	<bean id="persistenceExceptionTranslationPostProcessor"
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 
+	<!--  EMAIL -->
+	<int:channel id="inputChannel" />
+	<int:channel id="jmsChannel">
+		<int:interceptors>
+			<int:ref bean="loggingInterceptor"/>
+		</int:interceptors>
+	</int:channel>
+	<int:channel id="emailChannel" />
+	<int:gateway service-interface="edu.mum.everest.email.EmailGateway" default-request-channel="inputChannel" />
+
+	<bean id="emailService" class="edu.mum.everest.email.EmailService" />
+	
+	<bean id="mailSender"
+		class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		<property name="host" value="smtp.gmail.com" />
+		<property name="port" value="587" />
+		<property name="username" value="alkjaslkd@gmail.com" />
+		<property name="password" value="akjaskdhjd" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.transport.protocol">smtp</prop>
+				<prop key="mail.smtp.auth">true</prop>
+				<prop key="mail.smtp.starttls.enable">true</prop>
+				<prop key="mail.debug">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="emailTemplateResolver"
+		class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+		<property name="prefix" value="templates/" />
+		<property name="suffix" value=".html" />
+		<property name="templateMode" value="HTML5" />
+		<property name="cacheable" value="false" />
+	</bean>
+
+	<bean id="emailTemplateEngine"
+		class="org.thymeleaf.spring4.SpringTemplateEngine">
+		<property name="templateResolvers">
+			<set>
+				<ref bean="emailTemplateResolver" />
+			</set>
+		</property>
+	</bean>
+	
+	<bean id="connectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+		<property name="targetConnectionFactory">
+			<bean class="org.apache.activemq.ActiveMQConnectionFactory">
+				<property name="brokerURL" value="tcp://localhost:61616" />
+			</bean>
+		</property>
+	</bean> 
+	
+	<bean id="queue" class="org.apache.activemq.command.ActiveMQQueue">
+		<constructor-arg value="email.queue" />
+	</bean>
+	
+	<int:object-to-json-transformer input-channel="inputChannel" output-channel="jmsChannel" />
+	
+	<int-jms:outbound-channel-adapter connection-factory="connectionFactory" channel="jmsChannel"
+		destination = "queue" /> 
+
+<!-- 	<int-jms:inbound-channel-adapter connection-factory="connectionFactory"
+		channel="jmsChannel" destination="queue">
+		<int:poller fixed-rate="5000" />
+	</int-jms:inbound-channel-adapter>
+	
+	<int:json-to-object-transformer input-channel="jmsChannel" output-channel="emailChannel" type="edu.mum.everest.email.EmailMessage"  />
+	<int:service-activator ref="emailService" method="sendEmail" input-channel="emailChannel" /> -->
+	
+	<bean id="loggingInterceptor" class="edu.mum.everest.email.monitor.LoggingInterceptor" />
 </beans>
