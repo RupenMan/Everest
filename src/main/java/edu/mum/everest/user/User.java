@@ -14,6 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -52,6 +53,10 @@ public class User {
 	@Pattern(regexp="\\d{3}-\\d{3}-\\d{4}", message="{Phone.valid}")
 	@Column(name="phone")
 	private String phone;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private UserCredentials userCredential;
 	
 	@Valid
 	@OneToMany(cascade= {CascadeType.MERGE,CascadeType.PERSIST}, fetch=FetchType.EAGER, orphanRemoval=true)

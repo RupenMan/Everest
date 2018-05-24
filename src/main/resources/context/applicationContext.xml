@@ -117,4 +117,6 @@
 	<int:service-activator ref="emailService" method="sendEmail" input-channel="emailChannel" /> -->
 	
 	<bean id="loggingInterceptor" class="edu.mum.everest.email.monitor.LoggingInterceptor" />
+	
+	
 </beans>
