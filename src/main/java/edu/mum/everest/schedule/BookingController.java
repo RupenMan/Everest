@@ -31,10 +31,9 @@ public class BookingController {
 		activeMountaineer.getBooking().setStatus("Pending");
 		activeMountaineer.getBooking().setBookingDate(new Date());
 		activeMountaineer.getBooking().setMountaineer(activeMountaineer);
-//		
+
 		Schedule schedule = scheduleSerive.findOne(toBeBooked);
 		activeMountaineer.getBooking().setSchedule(schedule);
-//		booking.setSchedule(schedule);
 		bookingService.saveBooking(activeMountaineer.getBooking());
 		return "success";
 	}
