@@ -40,7 +40,7 @@ public class AddressController {
 	}
 
 	public String saveAddress(Address address) {
-		addressService.saveAddress(address);
+//		addressService.saveAddress(address);
 		return "success";
 	}
 

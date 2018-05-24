@@ -37,15 +37,15 @@ public class MountaineerController {
 	}
 
 	@RequestMapping(value = "/selector", method = RequestMethod.POST)
-	public String selector(@Valid @ModelAttribute("newMountaineer") Mountaineer saveMountaineer,
-			@RequestParam("id") String id, BindingResult result) {
+	public String selector(@Valid @ModelAttribute("newMountaineer") Mountaineer saveMountaineer,BindingResult result) {
 		if (result.hasErrors()) {
 			return "addMountaineer";
 		} else {
 			if (saveMountaineer.getId() == null) {
 				return saveMountaineer(saveMountaineer);
 			} else {
-				Mountaineer oldClimber = mountaineerService.findMountaineerById(Long.parseLong(id));
+				Long id = saveMountaineer.getId();
+				Mountaineer oldClimber = mountaineerService.findMountaineerById(id);
 				Booking myBooking = oldClimber.getBooking();
 				saveMountaineer.setBooking(myBooking);
 				return updateMountaineer(saveMountaineer);
