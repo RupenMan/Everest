@@ -18,20 +18,19 @@
 
 	<mvc:annotation-driven validator="validator" />
 
-	<bean id="viewResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+	<!-- <bean id="viewResolver" class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver"> 
+		<property name="prefix" value="/WEB-INF/views/" /> <property name="suffix" 
+		value=".jsp" /> <property name="cacheable" value="false" /> </bean> <bean 
+		id="engine" class="org.thymeleaf.spring4.SpringTemplateEngine"> <property 
+		name="templateResolver" ref="viewResolver" /> </bean> <bean id="" class="org.thymeleaf.spring4.view.ThymeleafViewResolver"> 
+		<property name="templateEngine" ref="engine" /> </bean> -->
+
+	<bean
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/views/" />
-	    <property name="suffix" value=".jsp" />
-	    <property name="cacheable" value="false" />
+		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<bean id="engine" class="org.thymeleaf.spring4.SpringTemplateEngine">
-		<property name="templateResolver" ref="viewResolver" />
-	</bean>
-	
-	<bean id="" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
-		<property name="templateEngine" ref="engine" />  
-	</bean>
-		
 	<context:component-scan base-package="edu.mum.everest" />
 
 
@@ -51,7 +50,8 @@
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
-	<mvc:resources mapping="/resources/**" location="/resources/theme1/"  cache-period="31556926"/>
+	<mvc:resources mapping="/resources/**" location="/resources/theme1/"
+		cache-period="31556926" />
 </beans>
 
 
