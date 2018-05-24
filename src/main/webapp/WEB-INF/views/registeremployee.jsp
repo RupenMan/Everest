@@ -45,8 +45,8 @@
 					<form:errors path="email" />
 				</div>
 				<div>
-					<label for="age">Phone</label> <br>
-					<form:input type="text" path="phone" value="15" min="15" max="80" />
+					<label for="phone">Phone</label> <br>
+					<form:input type="text" path="phone" />
 				</div>
 				<form:errors path="phone" />
 				<input type="submit" value="Add Employee" />

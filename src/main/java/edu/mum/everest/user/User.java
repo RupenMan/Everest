@@ -55,7 +55,7 @@ public class User {
 	
 	@Valid
 	@OneToMany(cascade= {CascadeType.MERGE,CascadeType.PERSIST}, fetch=FetchType.EAGER, orphanRemoval=true)
-	@JoinColumn(name="address_id",referencedColumnName="user_id")
+	@JoinColumn(name="address_id")
 	private List<Address> addressList= new ArrayList<Address>();
 
 	public Long getId() {
