@@ -11,6 +11,7 @@ import edu.mum.everest.user.Mountaineer;
 import edu.mum.everest.user.MountaineerService;
 import org.springframework.web.bind.annotation.RequestParam;
 
+
 @Controller
 @RequestMapping("/booking")
 public class BookingController {
@@ -31,7 +32,6 @@ public class BookingController {
 		activeMountaineer.getBooking().setStatus("Pending");
 		activeMountaineer.getBooking().setBookingDate(new Date());
 		activeMountaineer.getBooking().setMountaineer(activeMountaineer);
-
 		Schedule schedule = scheduleSerive.findOne(toBeBooked);
 		activeMountaineer.getBooking().setSchedule(schedule);
 		bookingService.saveBooking(activeMountaineer.getBooking());

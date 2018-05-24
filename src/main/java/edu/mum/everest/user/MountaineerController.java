@@ -24,7 +24,7 @@ public class MountaineerController {
 	public String homePage() {
 		return "mountaineer_homepage";
 	}
-	
+
 	@RequestMapping(value = "/addMountaineer", method = RequestMethod.GET)
 	public String addMountaineer(@ModelAttribute("newMountaineer") Mountaineer newMountaineer, Model model) {
 		Mountaineer mountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
@@ -39,7 +39,6 @@ public class MountaineerController {
 	@RequestMapping(value = "/selector", method = RequestMethod.POST)
 	public String selector(@Valid @ModelAttribute("newMountaineer") Mountaineer saveMountaineer,
 			@RequestParam("id") String id, BindingResult result) {
-
 		if (result.hasErrors()) {
 			return "addMountaineer";
 		} else {
@@ -53,8 +52,6 @@ public class MountaineerController {
 			}
 		}
 	}
-
-	
 
 	public String saveMountaineer(Mountaineer newMountaineer) {
 		mountaineerService.saveMountaineer(newMountaineer);

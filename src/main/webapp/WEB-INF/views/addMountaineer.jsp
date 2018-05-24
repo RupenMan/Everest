@@ -51,6 +51,7 @@
 			</c:if>
 			<c:if test="${mountaineer.age <= 0}">
 				<form:input type="number" path="age" value="15" min="15" max="80" />
+
 			</c:if>
 		</div>
 
@@ -74,7 +75,6 @@
 		<br>
 		<form:input type="hidden" name="id" path="id"
 			value="${mountaineer.id}" />
-
 	</form:form>
 </body>
 </html>

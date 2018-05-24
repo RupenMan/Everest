@@ -14,7 +14,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
-import javax.persistence.OrderColumn;
 import javax.persistence.Table;
 import javax.validation.Valid;
 import javax.validation.constraints.Pattern;
@@ -59,7 +58,6 @@ public class User {
 	@JoinColumn(name="address_id",referencedColumnName="user_id")
 	private List<Address> addressList= new ArrayList<Address>();
 
-	
 	public Long getId() {
 		return id;
 	}
