@@ -50,23 +50,31 @@
 					min="15" max="80" />
 			</c:if>
 			<c:if test="${mountaineer.age <= 0}">
-				<form:input type="number" path="age" value="15"
-					min="15" max="80" />
+				<form:input type="number" path="age" value="15" min="15" max="80" />
+
 			</c:if>
 		</div>
 
 		<div>
-			<label for="gender">Gender:</label> <br> <select name="gender">
+			<label for="gender">Gender: </label> <br> <select name="gender">
 				<option value="Select Gender ..." selected>Select Gender ...</option>
 				<option value="Male">Male</option>
 				<option value="Female">Female</option>
 			</select>
 		</div>
 
+		<div>
+			<label for="phone">Phone: </label> <br>
+			<form:input type="text" path="phone" placeholder="e.g. 641-451-5489"
+				value="${mountaineer.phone}" />
+			<br>
+			<form:errors path="phone" />
+		</div>
+
 		<input type="submit" value="Add Mountaineer" />
 		<br>
-		<form:input type="hidden" name="id" path="id" value="${mountaineer.id}" />
-		
+		<form:input type="hidden" name="id" path="id"
+			value="${mountaineer.id}" />
 	</form:form>
 </body>
 </html>

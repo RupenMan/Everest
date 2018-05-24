@@ -25,10 +25,20 @@ public class MountaineerController {
 		return "mountaineer_homepage";
 	}
 
+	@RequestMapping(value = "/addMountaineer", method = RequestMethod.GET)
+	public String addMountaineer(@ModelAttribute("newMountaineer") Mountaineer newMountaineer, Model model) {
+		Mountaineer mountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
+		if (mountaineer != null) {
+			model.addAttribute("mountaineer", mountaineer);
+		} else {
+			model.addAttribute("mountaineer", new Mountaineer());
+		}
+		return "addMountaineer";
+	}
+
 	@RequestMapping(value = "/selector", method = RequestMethod.POST)
 	public String selector(@Valid @ModelAttribute("newMountaineer") Mountaineer saveMountaineer,
 			@RequestParam("id") String id, BindingResult result) {
-
 		if (result.hasErrors()) {
 			return "addMountaineer";
 		} else {
@@ -40,18 +50,6 @@ public class MountaineerController {
 				saveMountaineer.setBooking(myBooking);
 				return updateMountaineer(saveMountaineer);
 			}
-		}
-	}
-
-	@RequestMapping(value = "/addMountaineer", method = RequestMethod.GET)
-	public String addMountaineer(@ModelAttribute("newMountaineer") Mountaineer newMountaineer, Model model) {
-		try {
-			Mountaineer mountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
-			model.addAttribute("mountaineer", mountaineer);
-			return "addMountaineer";
-		} catch (Exception ex) {
-			model.addAttribute("mountaineer", new Mountaineer());
-			return "addMountaineer";
 		}
 	}
 

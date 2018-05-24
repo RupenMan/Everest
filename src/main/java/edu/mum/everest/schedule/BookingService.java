@@ -15,5 +15,4 @@ public interface BookingService {
 	 * @return
 	 */
 	public Booking findOne(Long bookingId);
-
 }
