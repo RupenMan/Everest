@@ -22,11 +22,12 @@
 		<label>Booking Schedule: </label> <br> <label>Short
 			Description: </label> ${booking.schedule.shortDescription}<br> <label>Start
 			Date: </label>
-		<fmt:formatDate value="${booking.schedule.startDate}" pattern="yyyy-MM-dd" />
-		 <br> 
-		 <label>End Date:</label> 
-		 <fmt:formatDate value="${booking.schedule.endDate}" pattern="yyyy-MM-dd" />
-		 <br> <label>Tour Guide: </label> ${tourGuide} <br>
+		<fmt:formatDate value="${booking.schedule.startDate}"
+			pattern="yyyy-MM-dd" />
+		<br> <label>End Date:</label>
+		<fmt:formatDate value="${booking.schedule.endDate}"
+			pattern="yyyy-MM-dd" />
+		<br> <label>Tour Guide: </label> ${tourGuide} <br>
 	</div>
 
 	<a href="http://localhost:8080/Everest/mountaineer/homepage">Return
