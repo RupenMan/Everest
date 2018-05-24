@@ -11,4 +11,10 @@ import edu.mum.everest.shared.GenericDao;
  */
 public interface EmployeeDao extends GenericDao<Employee>{
 
+	/**
+	 * @param username
+	 * @return
+	 */
+	Employee findEmployeeByUsername(String username);
+
 }

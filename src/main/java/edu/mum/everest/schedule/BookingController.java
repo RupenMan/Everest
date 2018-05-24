@@ -23,7 +23,7 @@ public class BookingController {
 
 	@Autowired
 	private ScheduleService scheduleSerive;
-	
+
 	@RequestMapping("/saveBooking")
 	public String save(@RequestParam("scheduleId") Long toBeBooked) {
 		Mountaineer activeMountaineer = mountaineerService.findMountaineerByUsername("rupenman@gmail.com");
@@ -36,6 +36,14 @@ public class BookingController {
 		activeMountaineer.getBooking().setSchedule(schedule);
 		bookingService.saveBooking(activeMountaineer.getBooking());
 		return "success";
+	}
+	
+	@RequestMapping("/approveBooking")
+	public String approveBooking(@RequestParam("bookingId") Long bookingId) {
+		Booking booking = bookingService.findBookingById(bookingId);
+		booking.setStatus("Approved");
+		bookingService.updateBooking(booking);
+		return "redirect:/schedule/all";
 	}
 
 	@RequestMapping(value = "/viewBookingInfo", method = RequestMethod.GET)
